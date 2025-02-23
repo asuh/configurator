@@ -6,7 +6,7 @@ import data from './data/config.json';
 import './style.css';
 
 interface ConfigData {
-	BaseImageUrl: string;
+  BaseImageUrl: string;
   Id: string;
   TemplateId: string;
   ConfigId: string;
@@ -29,7 +29,7 @@ interface Material {
 
 interface Position {
   ImageUrl: string;
-	Position: string;
+  Position: string;
   Materials: Material[];
 }
 
