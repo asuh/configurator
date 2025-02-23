@@ -1,15 +1,14 @@
-import data from '../../data/config.json';
-import Positions from '../positions';
-import Colors from '../colors';
-import Materials from '../materials';
+import Positions from '../Positions';
+import Colors from '../Colors';
+import Materials from '../Materials';
 
 export default function Form() {
     return (
         <form class="product container-fluid" action="#">
             <div class="row">
-                <Positions data={data} />
-                <Materials data={data} />
-                <Colors data={data} />
+                <Positions />
+                <Materials />
+                <Colors />
             </div>
             <button class="submit" type="submit">Submit</button>
         </form>
