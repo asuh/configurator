@@ -1,0 +1,243 @@
+:root {
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+
+	color: #222;
+	background-color: #ffffff;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	display: flex;
+	align-items: center;
+	min-height: 100vh;
+}
+
+#app {
+	max-width: 1280px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+:root {
+  --color-light-gray: #d3d3d3;
+  --color-border: #666;
+  --color-border-checked: blue;
+  --color-background: #f7f7f7;
+}
+
+/* container-fluid */
+.container-fluid {
+  width: 100%;
+  padding-right: 0.9375rem;
+  padding-left: 0.9375rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* container */
+.container {
+  width: 100%;
+  padding-right: 0.9375rem;
+  padding-left: 0.9375rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 36rem) {
+  .container {
+    max-width: 33.75rem;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 48rem) {
+  .container {
+    max-width: 45rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 62rem) {
+  .container {
+    max-width: 60rem;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 75rem) {
+  .container {
+    max-width: 71.25rem;
+  }
+}
+
+/* row */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -0.9375rem;
+  margin-left: -0.9375rem;
+}
+
+/* Columns - Default (xs) */
+.col-xs-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 36rem) {
+  .col-sm-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 48rem) {
+  .col-md-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
+  .col-md-9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+}
+
+/* form-group */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+/* form-check */
+.form-check {
+  position: relative;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* form-check-input */
+.check-input {
+  position: absolute;
+  margin-top: 0.3rem;
+  margin-left: -1.25rem;
+  appearance: none;
+}
+
+/* form-check-label */
+.check-label {
+  margin-left: 1.25rem;
+}
+
+/* media query for form-check-inline */
+@media (min-width: 48rem) {
+  .form-check-inline {
+    display: flex;
+    align-items: center;
+    margin-right: 0;
+    padding-left: 0;
+  }
+
+  .form-check-inline .check-input {
+    position: static;
+    margin-top: 0;
+    margin-right: 0.3125rem;
+    margin-left: 0;
+  }
+}
+
+/* Custom Styles */
+
+.check-input:checked + .form-image {
+  background-color: var(--color-light-gray);
+}
+
+.check-input:checked,
+.check-input:hover {
+  transform: scale(1.2);
+}
+
+.check + .check {
+  margin-top: 0;
+}
+
+.position-container .check-label {
+  padding-left: 0;
+}
+
+.position {
+  max-width: 120%;
+}
+
+.color,
+.material,
+.position {
+  background-color: var(--color-background);
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+.color,
+.material {
+  border: 0.0625rem solid var(--color-border);
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.color.color:checked,
+.color.material:checked,
+.material.color:checked,
+.material.material:checked {
+  border-color: var(--color-border-checked);
+  border-width: 0.1875rem;
+}
+
+.material {
+  height: 5rem;
+  width: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.material:after {
+  content: attr(title);
+  font-size: 0.8rem;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 47.9375rem) {
+  .position-container .check {
+    text-align: center;
+  }
+}
+
+.check-label.checked {
+  border: 0.1875rem solid var(--color-border-checked);
+}
+
+.container-fluid {
+  max-width: 60rem;
+}
+
+.page-title {
+  font-weight: 700;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 1rem;
+  text-transform: uppercase;
+}

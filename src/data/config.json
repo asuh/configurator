@@ -1,0 +1,239 @@
+{
+  "Id": "product-configurator",
+  "TemplateId": "pc",
+  "ConfigId": "",
+  "StyleId": "Dress",
+  "StyleName": "Dress",
+  "Positions": [
+    {
+      "Position": "A",
+      "Materials": [
+        {
+          "Id": "SILK001",
+          "Name": "Silk",
+          "Colors": [
+            {
+              "Id": "white",
+              "Name": "White",
+              "SwatchUrl": "/dist/images/colors/white.png"
+            },
+            {
+              "Id": "green",
+              "Name": "Green",
+              "SwatchUrl": "/dist/images/colors/green.png"
+            },
+            {
+              "Id": "pink",
+              "Name": "Pink",
+              "SwatchUrl": "/dist/images/colors/pink.png"
+            },
+            {
+              "Id": "red",
+              "Name": "Red",
+              "SwatchUrl": "/dist/images/colors/red.png"
+            }
+          ]
+        },
+        {
+          "Id": "SATIN001",
+          "Name": "Satin",
+          "Colors": [
+            {
+              "Id": "white",
+              "Name": "White",
+              "SwatchUrl": "/dist/images/colors/white.png"
+            },
+            {
+              "Id": "green",
+              "Name": "Green",
+              "SwatchUrl": "/dist/images/colors/green.png"
+            },
+            {
+              "Id": "pink",
+              "Name": "Pink",
+              "SwatchUrl": "/dist/images/colors/pink.png"
+            },
+            {
+              "Id": "red",
+              "Name": "Red",
+              "SwatchUrl": "/dist/images/colors/red.png"
+            }
+          ]
+        }
+      ],
+      "ImageUrl": "/dist/images/options/option-a.png"
+    },
+    {
+      "Position": "B",
+      "Materials": [
+        {
+          "Id": "SILK001",
+          "Name": "Silk",
+          "Colors": [
+            {
+              "Id": "sparkle-gold",
+              "Name": "Sparkle Gold",
+              "SwatchUrl": "/dist/images/colors/sparkle-gold.png"
+            },
+            {
+              "Id": "sparkle-silver",
+              "Name": "Silver",
+              "SwatchUrl": "/dist/images/colors/sparkle-silver.png"
+            }
+          ]
+        },
+        {
+          "Id": "SATIN001",
+          "Name": "Satin",
+          "Colors": [
+            {
+              "Id": "sparkle-gold",
+              "Name": "Sparkle Gold",
+              "SwatchUrl": "/dist/images/colors/sparkle-gold.png"
+            },
+            {
+              "Id": "sparkle-silver",
+              "Name": "Sparkle Silver",
+              "SwatchUrl": "/dist/images/colors/sparkle-silver.png"
+            }
+          ]
+        }
+      ],
+      "ImageUrl": "/dist/images/options/option-b.png"
+    },
+    {
+      "Position": "C",
+      "Materials": [
+        {
+          "Id": "SILK001",
+          "Name": "Silk",
+          "Colors": [
+            {
+              "Id": "white",
+              "Name": "White",
+              "SwatchUrl": "/dist/images/colors/white.png"
+            },
+            {
+              "Id": "green",
+              "Name": "Green",
+              "SwatchUrl": "/dist/images/colors/green.png"
+            },
+            {
+              "Id": "pink",
+              "Name": "Pink",
+              "SwatchUrl": "/dist/images/colors/pink.png"
+            },
+            {
+              "Id": "red",
+              "Name": "Red",
+              "SwatchUrl": "/dist/images/colors/red.png"
+            }
+          ]
+        },
+        {
+          "Id": "SATIN001",
+          "Name": "Satin",
+          "Colors": [
+            {
+              "Id": "white",
+              "Name": "White",
+              "SwatchUrl": "/dist/images/colors/white.png"
+            },
+            {
+              "Id": "green",
+              "Name": "Green",
+              "SwatchUrl": "/dist/images/colors/green.png"
+            },
+            {
+              "Id": "pink",
+              "Name": "Pink",
+              "SwatchUrl": "/dist/images/colors/pink.png"
+            },
+            {
+              "Id": "red",
+              "Name": "Red",
+              "SwatchUrl": "/dist/images/colors/red.png"
+            }
+          ]
+        }
+      ],
+      "ImageUrl": "/dist/images/options/option-c.png"
+    },
+    {
+      "Position": "D",
+      "Materials": [
+        {
+          "Id": "SILK001",
+          "Name": "Silk",
+          "Colors": [
+            {
+              "Id": "white",
+              "Name": "White",
+              "SwatchUrl": "/dist/images/colors/white.png"
+            },
+            {
+              "Id": "green",
+              "Name": "Green",
+              "SwatchUrl": "/dist/images/colors/green.png"
+            },
+            {
+              "Id": "pink",
+              "Name": "Pink",
+              "SwatchUrl": "/dist/images/colors/pink.png"
+            },
+            {
+              "Id": "red",
+              "Name": "Red",
+              "SwatchUrl": "/dist/images/colors/red.png"
+            }
+          ]
+        },
+        {
+          "Id": "SATIN001",
+          "Name": "Satin",
+          "Colors": [
+            {
+              "Id": "white",
+              "Name": "White",
+              "SwatchUrl": "/dist/images/colors/white.png"
+            },
+            {
+              "Id": "green",
+              "Name": "Green",
+              "SwatchUrl": "/dist/images/colors/green.png"
+            },
+            {
+              "Id": "pink",
+              "Name": "Pink",
+              "SwatchUrl": "/dist/images/colors/pink.png"
+            },
+            {
+              "Id": "red",
+              "Name": "Red",
+              "SwatchUrl": "/dist/images/colors/red.png"
+            }
+          ]
+        }
+      ],
+      "ImageUrl": "/dist/images/options/option-d.png"
+    },
+    {
+      "Position": "E",
+      "Materials": [
+        {
+          "Id": "POLY001",
+          "Name": "Polyester",
+          "Colors": [
+            {
+              "Id": "sparkle-green",
+              "Name": "Sparkle Green",
+              "SwatchUrl": "/dist/images/colors/sparkle-green.png"
+            }
+          ]
+        }
+      ],
+      "ImageUrl": "/dist/images/options/option-e.png"
+    }
+  ],
+  "BaseImageUrl": "/dist/images/base/body.png"
+}
