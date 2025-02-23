@@ -5,7 +5,35 @@ import data from './data/config.json';
 
 import './style.css';
 
-export const Data = createContext(data);
+interface ConfigData {
+	BaseImageUrl: string;
+  Id: string;
+  TemplateId: string;
+  ConfigId: string;
+  StyleId: string;
+  StyleName: string;
+  Positions: Position[];
+}
+
+interface Color {
+  Id: string;
+  Name: string;
+  SwatchUrl: string;
+}
+
+interface Material {
+  Id: string;
+  Name: string;
+  Colors: Color[];
+}
+
+interface Position {
+  ImageUrl: string;
+	Position: string;
+  Materials: Material[];
+}
+
+export const Data = createContext<ConfigData>(data);
 
 export function App() {
 	return (
