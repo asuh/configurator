@@ -158,71 +158,70 @@ body {
 
 /* Custom Styles */
 
-.check-input:checked + .form-image {
+.form-check-input:checked + .form-image {
   background-color: var(--color-light-gray);
 }
 
-.check-input:checked,
-.check-input:hover {
+.form-check-input:checked,
+.form-check-input:hover {
   transform: scale(1.2);
 }
 
-.check + .check {
+.form-check + .form-check {
   margin-top: 0;
 }
 
-.position-container .check-label {
+.product-position-container .form-check-label {
   padding-left: 0;
 }
 
-.position {
+.product-position {
   max-width: 120%;
 }
 
-.color,
-.material,
-.position {
+.product-color,
+.product-material,
+.product-position {
   background-color: var(--color-background);
   cursor: pointer;
   transition: transform 0.5s;
 }
 
-.color,
-.material {
-  border: 0.0625rem solid var(--color-border);
+.product-color,
+.product-material {
+  border: 1px solid var(--color-border);
   height: 2.5rem;
   width: 2.5rem;
 }
 
-.color.color:checked,
-.color.material:checked,
-.material.color:checked,
-.material.material:checked {
+.product-color.product-color:checked,
+.product-color.product-material:checked,
+.product-material.product-color:checked,
+.product-material.product-material:checked {
   border-color: var(--color-border-checked);
   border-width: 0.1875rem;
 }
 
-.material {
-  height: 5rem;
-  width: 5rem;
+.product-material {
+  height: 5em;
+  width: 5em;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.material:after {
+.product-material:after {
   content: attr(title);
   font-size: 0.8rem;
 }
 
-/* Adjustments for smaller screens */
-@media (max-width: 47.9375rem) {
-  .position-container .check {
+@media (max-width: 767px) {
+  .product-position-container .form-check {
     text-align: center;
   }
 }
 
-.check-label.checked {
+.form-check-label.checked {
   border: 0.1875rem solid var(--color-border-checked);
 }
 
