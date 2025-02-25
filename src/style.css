@@ -54,28 +54,31 @@ body {
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 36rem) {
   .container {
-    max-width: 33.75rem;
+    max-width: 100%;
   }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 48rem) {
   .container {
-    max-width: 45rem;
+    max-width: 100%;
+		width: 45rem;
   }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 62rem) {
   .container {
-    max-width: 60rem;
+    max-width: 100%;
+		width: 60rem;
   }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 75rem) {
   .container {
-    max-width: 71.25rem;
+    max-width: 100%;
+		width: 71.25rem;
   }
 }
 
@@ -87,14 +90,33 @@ body {
   margin-left: -0.9375rem;
 }
 
-/* Columns - Default (xs) */
+/* Common properties for all breakpoints */
+.col-xs-3,
+.col-xs-12,
+.col-sm-3,
+.col-md-3,
+.col-md-6,
+.col-md-9 {
+  position: relative;
+  width: 100%; /* Default width */
+  padding-right: 15px; /* Assuming $grid-gutter-width: 30px; */
+  padding-left: 15px; /* Assuming $grid-gutter-width: 30px; */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.col-xs-3 {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
 .col-xs-12 {
   flex: 0 0 100%;
   max-width: 100%;
 }
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 36rem) {
+@media (min-width: 36em) {
+  /* 576px / 16px = 36em */
   .col-sm-3 {
     flex: 0 0 25%;
     max-width: 25%;
@@ -102,16 +124,27 @@ body {
 }
 
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 48rem) {
+@media (min-width: 48em) {
+  /* 768px / 16px = 48em */
   .col-md-3 {
     flex: 0 0 25%;
     max-width: 25%;
+  }
+
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
   }
 
   .col-md-9 {
     flex: 0 0 75%;
     max-width: 75%;
   }
+}
+
+fieldset {
+  background-color: var(--color-background);
+  border: none;
 }
 
 /* form-group */
@@ -121,9 +154,11 @@ body {
 
 /* form-check */
 .form-check {
-  position: relative;
-  display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.form-check-label {
+	margin-bottom: 0;
 }
 
 /* form-check-input */
@@ -157,6 +192,11 @@ body {
 }
 
 /* Custom Styles */
+.form-check-input {
+	position: absolute;
+  margin-top: .3rem;
+  margin-left: -1.25rem;
+}
 
 .form-check-input:checked + .form-image {
   background-color: var(--color-light-gray);

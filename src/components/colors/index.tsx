@@ -13,7 +13,7 @@ export default function Colors() {
       <div class="form-group row">
           {firstMaterial.Colors.map(color => {
               return (
-                  <div key={color.Id} class="form-check col-xs-3 col-sm-3 col-md-6">
+                  <div key={color.Id} class="form-check col-xs-3">
                       <label class="color form-check-label">
                           <input type="radio" class="form-check-input" name="optionsColor" id={`optionsColor${color.Id}`} value={color.Name} />
                           <img src={color.SwatchUrl} alt="Color" height="50" width="50" />

@@ -1,6 +1,5 @@
 import { render, createContext } from 'preact';
 import Form from './components/Form';
-import Image from './components/Image';
 import data from './data/config.json';
 
 import './style.css';
@@ -40,7 +39,6 @@ export function App() {
 		<Data.Provider value={data}>
 			<h1>Product Configurator</h1>
 			<Form />
-			<Image />
 		</Data.Provider>
 	);
 }
