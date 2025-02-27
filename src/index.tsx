@@ -1,6 +1,9 @@
 import { render, createContext } from 'preact';
-import Form from './components/Form';
 import data from './data/config.json';
+import Positions from './components/Positions';
+import Colors from './components/Colors';
+import Materials from './components/Materials';
+import Image from './components/Image';
 
 import './style.css';
 
@@ -38,7 +41,15 @@ export function App() {
 	return (
 		<Data.Provider value={data}>
 			<h1>Product Configurator</h1>
-			<Form />
+				<form class="product container-fluid" action="#">
+						<div class="row">
+								<Positions />
+								<Image />
+								<Materials />
+								<Colors />
+						</div>
+						<button class="submit" type="submit">Submit</button>
+				</form>
 		</Data.Provider>
 	);
 }
