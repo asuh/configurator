@@ -80,7 +80,7 @@ export function App() {
 							<Positions
 								positions={data.Positions}
 								selectedPosition={positionId}
-								onChange={handlePositionChange}
+								handlePositionChange={handlePositionChange}
 							/>
 							<div id="product-image" class="container product-image-container col-xs-12 col-md-9">
 								<img src={data.BaseImageUrl} alt={data.StyleId} />
@@ -88,12 +88,12 @@ export function App() {
 							<Materials 
 								materials={currentPosition.Materials}
 								selectedMaterial={materialId}
-								onChange={handleMaterialChange}
+								handleMaterialChange={handleMaterialChange}
 							/>
 							<Colors 
 								colors={currentMaterial.Colors}
 								selectedColor={colorId}
-								onChange={handleColorChange}
+								handleColorChange={handleColorChange}
 							/>
 					</div>
 					<button class="submit" type="submit">Submit</button>

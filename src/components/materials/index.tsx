@@ -1,6 +1,6 @@
 export default function Materials({
   materials,
-  onMaterialChange,
+  handleMaterialChange,
   selectedMaterial
 }) {
   return (
@@ -17,7 +17,7 @@ export default function Materials({
                       name="optionsMaterial" 
                       id={`optionsMaterial${material.Name}`} 
                       value={selectedMaterial} 
-                      onChange={onMaterialChange}
+                      onChange={handleMaterialChange}
                     />
                     <img src={material.ImageUrl} alt="Material" height="50" width="50" />
                 </label>
