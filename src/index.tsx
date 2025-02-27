@@ -1,13 +1,13 @@
-import { render, createContext } from 'preact';
-import data from './data/config.json';
+import { render } from 'preact';
+import { useState } from 'preact/hooks';
+import config from './data/config.json';
 import Positions from './components/Positions';
 import Colors from './components/Colors';
 import Materials from './components/Materials';
-import Image from './components/Image';
 
 import './style.css';
 
-interface ConfigData {
+interface dataConfig {
   BaseImageUrl: string;
   Id: string;
   TemplateId: string;
@@ -35,22 +35,70 @@ interface Position {
   Materials: Material[];
 }
 
-export const Data = createContext<ConfigData>(data);
+const data = config as dataConfig;
 
 export function App() {
+  // Initialize selection: use first available options.
+  const [positionId, setPositionId] = useState<string>(
+    data.Positions[0].Position
+  );
+  const currentPosition = data.Positions.find(
+    (position) => position.Position === positionId
+  );
+  const [materialId, setMaterialId] = useState<string>(
+    currentPosition.Materials[0].Id
+  );
+  const currentMaterial = currentPosition.Materials.find(
+    (material: Material) => material.Id === materialId
+  );
+  const [colorId, setColorId] = useState<string>(
+    currentMaterial.Colors[0].Id
+  );
+  const currentColor = currentMaterial.Colors.find(
+    (color: Color) => color.Id === colorId
+  );
+
+	const handlePositionChange = (event: Event) => {
+		const selectedPosition = (event.target as HTMLInputElement).value;
+		setPositionId(selectedPosition);
+	}
+
+	const handleMaterialChange = (event: Event) => {
+		const selectedMaterial = (event.target as HTMLInputElement).value;
+		setMaterialId(selectedMaterial);
+	}
+
+	const handleColorChange = (newColor: string) => {
+		setColorId(newColor);
+	}
+	
 	return (
-		<Data.Provider value={data}>
+		<>
 			<h1>Product Configurator</h1>
-				<form class="product container-fluid" action="#">
-						<div class="row">
-								<Positions />
-								<Image />
-								<Materials />
-								<Colors />
-						</div>
-						<button class="submit" type="submit">Submit</button>
-				</form>
-		</Data.Provider>
+			<form class="product container-fluid" action="#">
+					<div class="row">
+							<Positions
+								positions={data.Positions}
+								selectedPosition={positionId}
+								onChange={handlePositionChange}
+							/>
+							<div id="product-image" class="container product-image-container col-xs-12 col-md-9">
+								<img src={data.BaseImageUrl} alt={data.StyleId} />
+							</div>			
+							<Materials 
+								materials={currentPosition.Materials}
+								selectedMaterial={materialId}
+								onChange={handleMaterialChange}
+							/>
+							<Colors 
+								colors={currentMaterial.Colors}
+								selectedColor={colorId}
+								onChange={handleColorChange}
+							/>
+					</div>
+					<button class="submit" type="submit">Submit</button>
+			</form>
+		</>
 	);
 }
 
