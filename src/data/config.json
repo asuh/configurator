@@ -15,22 +15,22 @@
             {
               "Id": "white",
               "Name": "White",
-              "SwatchUrl": "/public/images/colors/white.png"
+              "SwatchUrl": "/images/colors/white.png"
             },
             {
               "Id": "green",
               "Name": "Green",
-              "SwatchUrl": "/public/images/colors/green.png"
+              "SwatchUrl": "/images/colors/green.png"
             },
             {
               "Id": "pink",
               "Name": "Pink",
-              "SwatchUrl": "/public/images/colors/pink.png"
+              "SwatchUrl": "/images/colors/pink.png"
             },
             {
               "Id": "red",
               "Name": "Red",
-              "SwatchUrl": "/public/images/colors/red.png"
+              "SwatchUrl": "/images/colors/red.png"
             }
           ]
         },
@@ -41,27 +41,27 @@
             {
               "Id": "white",
               "Name": "White",
-              "SwatchUrl": "/public/images/colors/white.png"
+              "SwatchUrl": "/images/colors/white.png"
             },
             {
               "Id": "green",
               "Name": "Green",
-              "SwatchUrl": "/public/images/colors/green.png"
+              "SwatchUrl": "/images/colors/green.png"
             },
             {
               "Id": "pink",
               "Name": "Pink",
-              "SwatchUrl": "/public/images/colors/pink.png"
+              "SwatchUrl": "/images/colors/pink.png"
             },
             {
               "Id": "red",
               "Name": "Red",
-              "SwatchUrl": "/public/images/colors/red.png"
+              "SwatchUrl": "/images/colors/red.png"
             }
           ]
         }
       ],
-      "ImageUrl": "/public/images/options/option-a.png"
+      "ImageUrl": "/images/options/option-a.png"
     },
     {
       "Position": "B",
@@ -73,12 +73,12 @@
             {
               "Id": "sparkle-gold",
               "Name": "Sparkle Gold",
-              "SwatchUrl": "/public/images/colors/sparkle-gold.png"
+              "SwatchUrl": "/images/colors/sparkle-gold.png"
             },
             {
               "Id": "sparkle-silver",
               "Name": "Silver",
-              "SwatchUrl": "/public/images/colors/sparkle-silver.png"
+              "SwatchUrl": "/images/colors/sparkle-silver.png"
             }
           ]
         },
@@ -89,17 +89,17 @@
             {
               "Id": "sparkle-gold",
               "Name": "Sparkle Gold",
-              "SwatchUrl": "/public/images/colors/sparkle-gold.png"
+              "SwatchUrl": "/images/colors/sparkle-gold.png"
             },
             {
               "Id": "sparkle-silver",
               "Name": "Sparkle Silver",
-              "SwatchUrl": "/public/images/colors/sparkle-silver.png"
+              "SwatchUrl": "/images/colors/sparkle-silver.png"
             }
           ]
         }
       ],
-      "ImageUrl": "/public/images/options/option-b.png"
+      "ImageUrl": "/images/options/option-b.png"
     },
     {
       "Position": "C",
@@ -111,22 +111,22 @@
             {
               "Id": "white",
               "Name": "White",
-              "SwatchUrl": "/public/images/colors/white.png"
+              "SwatchUrl": "/images/colors/white.png"
             },
             {
               "Id": "green",
               "Name": "Green",
-              "SwatchUrl": "/public/images/colors/green.png"
+              "SwatchUrl": "/images/colors/green.png"
             },
             {
               "Id": "pink",
               "Name": "Pink",
-              "SwatchUrl": "/public/images/colors/pink.png"
+              "SwatchUrl": "/images/colors/pink.png"
             },
             {
               "Id": "red",
               "Name": "Red",
-              "SwatchUrl": "/public/images/colors/red.png"
+              "SwatchUrl": "/images/colors/red.png"
             }
           ]
         },
@@ -137,27 +137,27 @@
             {
               "Id": "white",
               "Name": "White",
-              "SwatchUrl": "/public/images/colors/white.png"
+              "SwatchUrl": "/images/colors/white.png"
             },
             {
               "Id": "green",
               "Name": "Green",
-              "SwatchUrl": "/public/images/colors/green.png"
+              "SwatchUrl": "/images/colors/green.png"
             },
             {
               "Id": "pink",
               "Name": "Pink",
-              "SwatchUrl": "/public/images/colors/pink.png"
+              "SwatchUrl": "/images/colors/pink.png"
             },
             {
               "Id": "red",
               "Name": "Red",
-              "SwatchUrl": "/public/images/colors/red.png"
+              "SwatchUrl": "/images/colors/red.png"
             }
           ]
         }
       ],
-      "ImageUrl": "/public/images/options/option-c.png"
+      "ImageUrl": "/images/options/option-c.png"
     },
     {
       "Position": "D",
@@ -169,22 +169,22 @@
             {
               "Id": "white",
               "Name": "White",
-              "SwatchUrl": "/public/images/colors/white.png"
+              "SwatchUrl": "/images/colors/white.png"
             },
             {
               "Id": "green",
               "Name": "Green",
-              "SwatchUrl": "/public/images/colors/green.png"
+              "SwatchUrl": "/images/colors/green.png"
             },
             {
               "Id": "pink",
               "Name": "Pink",
-              "SwatchUrl": "/public/images/colors/pink.png"
+              "SwatchUrl": "/images/colors/pink.png"
             },
             {
               "Id": "red",
               "Name": "Red",
-              "SwatchUrl": "/public/images/colors/red.png"
+              "SwatchUrl": "/images/colors/red.png"
             }
           ]
         },
@@ -195,27 +195,27 @@
             {
               "Id": "white",
               "Name": "White",
-              "SwatchUrl": "/public/images/colors/white.png"
+              "SwatchUrl": "/images/colors/white.png"
             },
             {
               "Id": "green",
               "Name": "Green",
-              "SwatchUrl": "/public/images/colors/green.png"
+              "SwatchUrl": "/images/colors/green.png"
             },
             {
               "Id": "pink",
               "Name": "Pink",
-              "SwatchUrl": "/public/images/colors/pink.png"
+              "SwatchUrl": "/images/colors/pink.png"
             },
             {
               "Id": "red",
               "Name": "Red",
-              "SwatchUrl": "/public/images/colors/red.png"
+              "SwatchUrl": "/images/colors/red.png"
             }
           ]
         }
       ],
-      "ImageUrl": "/public/images/options/option-d.png"
+      "ImageUrl": "/images/options/option-d.png"
     },
     {
       "Position": "E",
@@ -227,13 +227,13 @@
             {
               "Id": "sparkle-green",
               "Name": "Sparkle Green",
-              "SwatchUrl": "/public/images/colors/sparkle-green.png"
+              "SwatchUrl": "/images/colors/sparkle-green.png"
             }
           ]
         }
       ],
-      "ImageUrl": "/public/images/options/option-e.png"
+      "ImageUrl": "/images/options/option-e.png"
     }
   ],
-  "BaseImageUrl": "/public/images/base/body.png"
+  "BaseImageUrl": "/images/base/body.png"
 }
