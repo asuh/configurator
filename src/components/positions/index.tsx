@@ -1,3 +1,10 @@
+export interface Position {
+  ImageUrl: string;
+  Position: string;
+  selectedPosition: string;
+  handlePositionChange: (newPosition: string) => void;
+}
+
 export default function Positions({
   handlePositionChange,
   positions,
@@ -18,7 +25,7 @@ export default function Positions({
                       name="optionsPosition" 
                       id={`optionsPosition${data.Position}`} 
                       value={selectedPosition} 
-                      onChange={handlePositionChange}
+                      onChange={() => handlePositionChange(data.Position)}
                     />
                     <img class="form-image product-position" src={data.ImageUrl} alt="Position" height="50" width="50" />
                 </label>

@@ -38,7 +38,6 @@ interface Position {
 const data = config as dataConfig;
 
 export function App() {
-  // Initialize selection: use first available options.
   const [positionId, setPositionId] = useState<string>(
     data.Positions[0].Position
   );
@@ -58,19 +57,36 @@ export function App() {
     (color: Color) => color.Id === colorId
   );
 
-	const handlePositionChange = (event: Event) => {
-		const selectedPosition = (event.target as HTMLInputElement).value;
-		setPositionId(selectedPosition);
+	const handlePositionChange = (newPosition: string) => {
+		// The selected position should be a valid position
+		const selectedPosition = data.Positions.find(position => {
+			return position.Position === newPosition
+		});
+		if (!selectedPosition) {
+			throw new Error("The api file is invalid");
+		}
+		/*
+		 * The selected position should also have:
+		 * - one material
+		 * - one color
+		 */
+		setPositionId(newPosition);
+		const newMaterial = selectedPosition.Materials[0];
+		setMaterialId(newMaterial.Id);
+		setColorId(newMaterial.Colors[0].Id);
 	}
 
-	const handleMaterialChange = (event: Event) => {
-		const selectedMaterial = (event.target as HTMLInputElement).value;
+	const handleMaterialChange = (newMaterial: string) => {
+		const selectedMaterial = newMaterial;
 		setMaterialId(selectedMaterial);
 	}
 
 	const handleColorChange = (newColor: string) => {
 		setColorId(newColor);
 	}
+
+  const modelImageSrc = `${data.BaseImageUrl}?pos=${currentPosition.Position}&mat=${currentMaterial.Id}&col=${currentColor.Id}`;
+  const modelImageAlt = `Model: Option ${currentPosition.Position}, Material ${currentMaterial.Name}, Color ${currentColor.Name}`;	
 	
 	return (
 		<>
@@ -83,7 +99,10 @@ export function App() {
 								handlePositionChange={handlePositionChange}
 							/>
 							<div id="product-image" class="container product-image-container col-xs-12 col-md-9">
-								<img src={data.BaseImageUrl} alt={data.StyleId} />
+								<img 
+									src={modelImageSrc} 
+									alt={modelImageAlt} 
+								/>
 							</div>			
 							<Materials 
 								materials={currentPosition.Materials}
@@ -102,4 +121,4 @@ export function App() {
 	);
 }
 
-render(<App />, document.getElementById('app'));
+render(<App />, document.getElementById('app') as HTMLElement);
