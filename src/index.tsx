@@ -8,54 +8,54 @@ import Materials from './components/Materials';
 import './style.css';
 
 interface dataConfig {
-  BaseImageUrl: string;
-  Id: string;
-  TemplateId: string;
-  ConfigId: string;
-  StyleId: string;
-  StyleName: string;
-  Positions: Position[];
+	BaseImageUrl: string;
+	Id: string;
+	TemplateId: string;
+	ConfigId: string;
+	StyleId: string;
+	StyleName: string;
+	Positions: Position[];
 }
 
 interface Color {
-  Id: string;
-  Name: string;
-  SwatchUrl: string;
+	Id: string;
+	Name: string;
+	SwatchUrl: string;
 }
 
 interface Material {
-  Id: string;
-  Name: string;
-  Colors: Color[];
+	Id: string;
+	Name: string;
+	Colors: Color[];
 }
 
 interface Position {
-  ImageUrl: string;
-  Position: string;
-  Materials: Material[];
+	ImageUrl: string;
+	Position: string;
+	Materials: Material[];
 }
 
 const data = config as dataConfig;
 
 export function App() {
-  const [positionId, setPositionId] = useState<string>(
-    data.Positions[0].Position
-  );
-  const currentPosition = data.Positions.find(
-    (position) => position.Position === positionId
-  );
-  const [materialId, setMaterialId] = useState<string>(
-    currentPosition.Materials[0].Id
-  );
-  const currentMaterial = currentPosition.Materials.find(
-    (material: Material) => material.Id === materialId
-  );
-  const [colorId, setColorId] = useState<string>(
-    currentMaterial.Colors[0].Id
-  );
-  const currentColor = currentMaterial.Colors.find(
-    (color: Color) => color.Id === colorId
-  );
+	const [positionId, setPositionId] = useState<string>(
+		data.Positions[0].Position
+	);
+	const currentPosition = data.Positions.find(
+		(position) => position.Position === positionId
+	);
+	const [materialId, setMaterialId] = useState<string>(
+		currentPosition.Materials[0].Id
+	);
+	const currentMaterial = currentPosition.Materials.find(
+		(material: Material) => material.Id === materialId
+	);
+	const [colorId, setColorId] = useState<string>(
+		currentMaterial.Colors[0].Id
+	);
+	const currentColor = currentMaterial.Colors.find(
+		(color: Color) => color.Id === colorId
+	);
 
 	const handlePositionChange = (newPosition: string) => {
 		// The selected position should be a valid position
@@ -92,49 +92,49 @@ export function App() {
 		setColorId(newColor);
 	}
 
-  const modelImageSrc = `${data.BaseImageUrl}?pos=${currentPosition.Position}&mat=${currentMaterial.Id}&col=${currentColor.Id}`;
-  const modelImageAlt = `Model: Option ${currentPosition.Position}, Material ${currentMaterial.Name}, Color ${currentColor.Name}`;	
-	
+	const modelImageSrc = `${data.BaseImageUrl}?pos=${currentPosition.Position}&mat=${currentMaterial.Id}&col=${currentColor.Id}`;
+	const modelImageAlt = `Model: Option ${currentPosition.Position}, Material ${currentMaterial.Name}, Color ${currentColor.Name}`;
+
 	return (
 		<>
 			<h1>Product Configurator</h1>
 			<form class="product container-fluid" action="#">
-					<div class="row">
-							<Positions
-								positions={data.Positions}
-								selectedPosition={positionId}
-								handlePositionChange={handlePositionChange}
-							/>
-							<div id="product-image" class="container product-image-container col-xs-12 col-md-9">
-								<img 
-									src={modelImageSrc} 
-									alt={modelImageAlt} 
-								/>
-								{currentColor && currentPosition && currentMaterial &&
-									<div class="overlays-container">
-										<img src={currentPosition.ImageUrl} alt={`Position + ${currentPosition.Position}`} class="overlay-image" />
-										<div 
-											class="overlay-color"
-											style={`
+				<div class="row">
+					<Positions
+						positions={data.Positions}
+						selectedPosition={positionId}
+						handlePositionChange={handlePositionChange}
+					/>
+					<div id="product-image" class="container product-image-container col-xs-12 col-md-9">
+						<img
+							src={modelImageSrc}
+							alt={modelImageAlt}
+						/>
+						{currentColor && currentPosition && currentMaterial &&
+							<div class="overlays-container">
+								<img src={currentPosition.ImageUrl} alt={`Position + ${currentPosition.Position}`} class="overlay-image" />
+								<div
+									class="overlay-color"
+									style={`
 												--overlay-background: url(${currentColor.SwatchUrl});
 												--mask-image: url(${currentPosition.ImageUrl});
 											`}
-										/>
-									</div>
-								}
-							</div>			
-							<Materials 
-								materials={currentPosition.Materials}
-								selectedMaterial={materialId}
-								handleMaterialChange={handleMaterialChange}
-							/>
-							<Colors 
-								colors={currentMaterial.Colors}
-								selectedColor={colorId}
-								handleColorChange={handleColorChange}
-							/>
+								/>
+							</div>
+						}
 					</div>
-					<button class="submit" type="submit">Submit</button>
+					<Materials
+						materials={currentPosition.Materials}
+						selectedMaterial={materialId}
+						handleMaterialChange={handleMaterialChange}
+					/>
+					<Colors
+						colors={currentMaterial.Colors}
+						selectedColor={colorId}
+						handleColorChange={handleColorChange}
+					/>
+				</div>
+				<button class="submit" type="submit">Submit</button>
 			</form>
 		</>
 	);
