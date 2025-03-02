@@ -1,8 +1,17 @@
+interface Material {
+  materials: Material[];
+  selectedMaterial: string;
+  Id: string;
+  Name: string;
+  SwatchUrl: string;
+  handleMaterialChange: (newMaterial: string) => void
+}
+
 export default function Materials({
   materials,
   handleMaterialChange,
   selectedMaterial
-}) {
+} : Material) {
   return (
     <fieldset id="product-material" class="container product-material-container col-xs-12 col-md-3">
       <legend class="section-title">Choose your Material</legend>
@@ -17,9 +26,9 @@ export default function Materials({
                       name="optionsMaterial" 
                       id={`optionsMaterial${material.Name}`} 
                       value={selectedMaterial} 
-                      onChange={handleMaterialChange}
+                      onChange={() => handleMaterialChange(material.Id)}
                     />
-                    <img src={material.ImageUrl} alt="Material" height="50" width="50" />
+                    {material.Name}
                 </label>
             </div>
           );
