@@ -261,6 +261,23 @@ fieldset {
   }
 }
 
+.overlay-image,
+.overlay-color {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.overlay-color {
+  background: var(--overlay-background);
+  mask: var(--mask-image);
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
 .form-check-label.checked {
   border: 0.1875rem solid var(--color-border-checked);
 }

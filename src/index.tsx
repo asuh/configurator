@@ -77,8 +77,15 @@ export function App() {
 	}
 
 	const handleMaterialChange = (newMaterial: string) => {
-		const selectedMaterial = newMaterial;
-		setMaterialId(selectedMaterial);
+		const selectedMaterial = currentPosition.Materials.find(
+			(material: Material) => {
+				return material.Id === newMaterial
+			}
+		);
+		if (!selectedMaterial) return;
+		setMaterialId(newMaterial);
+		// Reset the color to the first color available for the new material.
+		setColorId(selectedMaterial.Colors[0].Id);
 	}
 
 	const handleColorChange = (newColor: string) => {
@@ -103,6 +110,18 @@ export function App() {
 									src={modelImageSrc} 
 									alt={modelImageAlt} 
 								/>
+								{currentColor && currentPosition && currentMaterial &&
+									<div class="overlays-container">
+										<img src={currentPosition.ImageUrl} alt={`Position + ${currentPosition.Position}`} class="overlay-image" />
+										<div 
+											class="overlay-color"
+											style={`
+												--overlay-background: url(${currentColor.SwatchUrl});
+												--mask-image: url(${currentPosition.ImageUrl});
+											`}
+										/>
+									</div>
+								}
 							</div>			
 							<Materials 
 								materials={currentPosition.Materials}
