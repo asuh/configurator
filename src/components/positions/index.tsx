@@ -26,6 +26,7 @@ export default function Positions({
                       name="optionsPosition" 
                       id={`optionsPosition${data.Position}`} 
                       value={selectedPosition} 
+                      checked={selectedPosition === data.Position}
                       onChange={() => handlePositionChange(data.Position)}
                     />
                     <img class="form-image product-position" src={data.ImageUrl} alt="Position" height="50" width="50" />

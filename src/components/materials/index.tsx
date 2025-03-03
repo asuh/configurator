@@ -24,7 +24,8 @@ export default function Materials({
                       class="form-check-input" 
                       name="optionsMaterial" 
                       id={`optionsMaterial${material.Name}`} 
-                      value={selectedMaterial} 
+                      value={selectedMaterial}
+                      checked={selectedMaterial === material.Id}
                       onChange={() => handleMaterialChange(material.Id)}
                     />
                     {material.Name}
