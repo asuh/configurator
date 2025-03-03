@@ -1,9 +1,8 @@
-interface Material {
+import type { Material } from "@types";
+
+interface MaterialProps {
   materials: Material[];
   selectedMaterial: string;
-  Id: string;
-  Name: string;
-  SwatchUrl: string;
   handleMaterialChange: (newMaterial: string) => void
 }
 
@@ -11,7 +10,7 @@ export default function Materials({
   materials,
   handleMaterialChange,
   selectedMaterial
-} : Material) {
+} : MaterialProps) {
   return (
     <fieldset id="product-material" class="container product-material-container col-xs-12 col-md-3">
       <legend class="section-title">Choose your Material</legend>

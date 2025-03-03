@@ -1,6 +1,7 @@
-export interface Position {
-  ImageUrl: string;
-  Position: string;
+import type { Position } from "@types";
+
+export interface PositionProps {
+  positions: Position[];
   selectedPosition: string;
   handlePositionChange: (newPosition: string) => void;
 }
@@ -9,7 +10,7 @@ export default function Positions({
   handlePositionChange,
   positions,
   selectedPosition
-}) {
+} : PositionProps) {
 
   return (
     <fieldset id="product-position" class="container product-position-container col-xs-12 col-md-3">

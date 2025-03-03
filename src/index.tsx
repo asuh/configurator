@@ -4,36 +4,9 @@ import config from './data/config.json';
 import Positions from './components/Positions';
 import Colors from './components/Colors';
 import Materials from './components/Materials';
+import type { Color, Material, dataConfig } from './types';
 
 import './style.css';
-
-interface dataConfig {
-	BaseImageUrl: string;
-	Id: string;
-	TemplateId: string;
-	ConfigId: string;
-	StyleId: string;
-	StyleName: string;
-	Positions: Position[];
-}
-
-interface Color {
-	Id: string;
-	Name: string;
-	SwatchUrl: string;
-}
-
-interface Material {
-	Id: string;
-	Name: string;
-	Colors: Color[];
-}
-
-interface Position {
-	ImageUrl: string;
-	Position: string;
-	Materials: Material[];
-}
 
 const data = config as dataConfig;
 
