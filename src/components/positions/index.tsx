@@ -22,14 +22,14 @@ export default function Positions({
                 <label class="color form-check-label">
                     <input 
                       type="radio" 
-                      class="form-check-input" 
+                      class="form-check-input visuallyhidden" 
                       name="optionsPosition" 
                       id={`optionsPosition${data.Position}`} 
                       value={selectedPosition} 
                       checked={selectedPosition === data.Position}
                       onChange={() => handlePositionChange(data.Position)}
                     />
-                    <img class="form-image product-position" src={data.ImageUrl} alt="Position" height="50" width="50" />
+                    <img class="form-image product-position" src={data.ImageUrl} alt="Position" height="100%" width="100%" />
                 </label>
             </div>
           );

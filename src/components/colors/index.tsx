@@ -21,14 +21,14 @@ export default function Colors({
                 <label class="color form-check-label">
                     <input 
                       type="radio" 
-                      class="form-check-input" 
+                      class="form-check-input visuallyhidden" 
                       name="optionsColor" 
                       id={`optionsColor${color.Id}`} 
                       value={selectedColor}
                       checked={selectedColor === color.Id}
                       onChange={() => handleColorChange(color.Id)}
                     />
-                    <img src={color.SwatchUrl} alt="Color" height="50" width="50" />
+                    <img class="form-image product-color" src={color.SwatchUrl} alt="Color" height="50" width="50" />
                 </label>
             </div>
           );
