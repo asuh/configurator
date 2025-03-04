@@ -72,41 +72,39 @@ export function App() {
 		<>
 			<h1>Product Configurator</h1>
 			<form class="product container-fluid" action="#">
-				<div class="row">
-					<Positions
-						positions={data.Positions}
-						selectedPosition={positionId}
-						handlePositionChange={handlePositionChange}
+				<Positions
+					positions={data.Positions}
+					selectedPosition={positionId}
+					handlePositionChange={handlePositionChange}
+				/>
+				<div id="product-image" class="container product-image-container">
+					<img
+						src={modelImageSrc}
+						alt={modelImageAlt}
 					/>
-					<div id="product-image" class="container product-image-container col-xs-12 col-md-9">
-						<img
-							src={modelImageSrc}
-							alt={modelImageAlt}
-						/>
-						{currentColor && currentPosition && currentMaterial &&
-							<div class="overlays-container">
-								<img src={currentPosition.ImageUrl} alt={`Position + ${currentPosition.Position}`} class="overlay-image" />
-								<div
-									class="overlay-color"
-									style={`
-												--overlay-background: url(${currentColor.SwatchUrl});
-												--mask-image: url(${currentPosition.ImageUrl});
-											`}
-								/>
-							</div>
-						}
-					</div>
-					<Materials
-						materials={currentPosition.Materials}
-						selectedMaterial={materialId}
-						handleMaterialChange={handleMaterialChange}
-					/>
-					<Colors
-						colors={currentMaterial.Colors}
-						selectedColor={colorId}
-						handleColorChange={handleColorChange}
-					/>
+					{currentColor && currentPosition && currentMaterial &&
+						<div class="overlays-container">
+							<img src={currentPosition.ImageUrl} alt={`Position + ${currentPosition.Position}`} class="overlay-image" />
+							<div
+								class="overlay-color"
+								style={`
+											--overlay-background: url(${currentColor.SwatchUrl});
+											--mask-image: url(${currentPosition.ImageUrl});
+										`}
+							/>
+						</div>
+					}
 				</div>
+				<Materials
+					materials={currentPosition.Materials}
+					selectedMaterial={materialId}
+					handleMaterialChange={handleMaterialChange}
+				/>
+				<Colors
+					colors={currentMaterial.Colors}
+					selectedColor={colorId}
+					handleColorChange={handleColorChange}
+				/>
 				<button class="submit" type="submit">Submit</button>
 			</form>
 		</>

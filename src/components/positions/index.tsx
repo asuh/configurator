@@ -13,12 +13,12 @@ export default function Positions({
 } : PositionProps) {
 
   return (
-    <fieldset id="product-position" class="container product-position-container col-xs-12 col-md-3">
+    <fieldset id="product-position" class="container product-position-container">
       <legend class="section-title">Choose your Position</legend>
-      <div class="form-group row">
+      <div class="form-group">
         {positions.map(data => {
           return (
-            <div key={data.Position} class="form-check col-xs-3 col-sm-3 col-md-6">
+            <div key={data.Position} class="form-check">
                 <label class="color form-check-label">
                     <input 
                       type="radio" 

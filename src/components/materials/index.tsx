@@ -12,12 +12,12 @@ export default function Materials({
   selectedMaterial
 } : MaterialProps) {
   return (
-    <fieldset id="product-material" class="container product-material-container col-xs-12 col-md-3">
+    <fieldset id="product-material" class="container product-material-container">
       <legend class="section-title">Choose your Material</legend>
-      <div class="form-group row">
+      <div class="form-group">
         {materials.map(material => {
           return (
-            <div key={material.Id} class="form-check col-md-6">
+            <div key={material.Id} class="form-check">
                 <label class="color form-check-label">
                     <input 
                       type="radio" 

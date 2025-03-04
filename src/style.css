@@ -43,165 +43,37 @@ body {
   --color-background: #f7f7f7;
 }
 
-/* container-fluid */
 .container-fluid {
-  width: 100%;
-  padding-right: 0.9375rem;
-  padding-left: 0.9375rem;
-  margin-right: auto;
-  margin-left: auto;
+  padding-inline: 0.9375rem;
+  margin-inline: auto;
 }
 
-/* container */
-.container {
-  width: 100%;
-  padding-right: 0.9375rem;
-  padding-left: 0.9375rem;
-  margin-right: auto;
-  margin-left: auto;
+.product {
+  display: grid;
+  gap: 1rem;
 }
 
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 36rem) {
-  .container {
-    max-width: 100%;
-  }
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 48rem) {
-  .container {
-    max-width: 100%;
-		width: 45rem;
-  }
-}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 62rem) {
-  .container {
-    max-width: 100%;
-		width: 60rem;
-  }
-}
-
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 75rem) {
-  .container {
-    max-width: 100%;
-		width: 71.25rem;
-  }
-}
-
-/* row */
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -0.9375rem;
-  margin-left: -0.9375rem;
-}
-
-/* Common properties for all breakpoints */
-.col-xs-3,
-.col-xs-12,
-.col-sm-3,
-.col-md-3,
-.col-md-6,
-.col-md-9 {
-  position: relative;
-  width: 100%; /* Default width */
-  padding-right: 15px; /* Assuming $grid-gutter-width: 30px; */
-  padding-left: 15px; /* Assuming $grid-gutter-width: 30px; */
-  box-sizing: border-box; /* Include padding in width calculation */
-}
-
-.col-xs-3 {
-  flex: 0 0 25%;
-  max-width: 25%;
-}
-
-.col-xs-12 {
-  flex: 0 0 100%;
-  max-width: 100%;
-}
-
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 36em) {
-  /* 576px / 16px = 36em */
-  .col-sm-3 {
-    flex: 0 0 25%;
-    max-width: 25%;
-  }
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 48em) {
-  /* 768px / 16px = 48em */
-  .col-md-3 {
-    flex: 0 0 25%;
-    max-width: 25%;
-  }
-
-  .col-md-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-
-  .col-md-9 {
-    flex: 0 0 75%;
-    max-width: 75%;
+@media (width >= 650px) {
+  .product {
+    grid-template-columns: minmax(200px, min(30%, 250px)) 1fr;
   }
 }
 
 fieldset {
-  background-color: var(--color-background);
   border: none;
 }
 
-/* form-group */
 .form-group {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(2, 1fr);
   margin-bottom: 1rem;
 }
 
-/* form-check */
-.form-check {
-  margin-bottom: 0.75rem;
+.product-color-container .form-group {
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
 }
 
-.form-check-label {
-	margin-bottom: 0;
-}
-
-/* form-check-input */
-.check-input {
-  position: absolute;
-  margin-top: 0.3rem;
-  margin-left: -1.25rem;
-  appearance: none;
-}
-
-/* form-check-label */
-.check-label {
-  margin-left: 1.25rem;
-}
-
-/* media query for form-check-inline */
-@media (min-width: 48rem) {
-  .form-check-inline {
-    display: flex;
-    align-items: center;
-    margin-right: 0;
-    padding-left: 0;
-  }
-
-  .form-check-inline .check-input {
-    position: static;
-    margin-top: 0;
-    margin-right: 0.3125rem;
-    margin-left: 0;
-  }
-}
-
-/* Custom Styles */
 .form-check-input {
 	position: absolute;
   margin-top: .3rem;
@@ -217,22 +89,22 @@ fieldset {
   transform: scale(1.2);
 }
 
-.form-check + .form-check {
-  margin-top: 0;
-}
-
-.product-position-container .form-check-label {
-  padding-left: 0;
-}
-
 .product-position {
   max-width: 120%;
+}
+
+.product-image-container {
+  order: -1;
+  position: relative;
+  
+  @media (width >= 650px) {
+      order: unset;
+    }
 }
 
 .product-color,
 .product-material,
 .product-position {
-  background-color: var(--color-background);
   cursor: pointer;
   transition: transform 0.5s;
 }

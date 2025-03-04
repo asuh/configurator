@@ -12,12 +12,12 @@ export default function Colors({
   selectedColor
 } : ColorProps) {
   return (
-    <fieldset id="product-color" class="container product-color-container col-xs-12 col-md-9">
+    <fieldset id="product-color" class="container product-color-container">
       <legend class="section-title">Choose your Color</legend>
-      <div class="form-group row">
+      <div class="form-group">
         {colors.map(color => {
           return (
-            <div key={color.Id} class="form-check col-xs-3">
+            <div key={color.Id} class="form-check">
                 <label class="color form-check-label">
                     <input 
                       type="radio" 
