@@ -1,5 +1,6 @@
 import { render } from 'preact';
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
+import { signal } from '@preact/signals';
 import config from './data/config.json';
 import Positions from './components/Positions';
 import Colors from './components/Colors';
@@ -30,12 +31,13 @@ const loadState = () => {
 	}
 }
 
+const savedState = loadState();
+
+const positionId = signal(savedState?.positionId || data.Positions[0].Position);
+
 export function App() {
-	const [positionId, setPositionId] = useState<string>(
-		data.Positions[0].Position
-	);
 	const currentPosition = data.Positions.find(
-		(position) => position.Position === positionId
+		(position) => position.Position === positionId.value
 	);
 	const [materialId, setMaterialId] = useState<string>(
 		currentPosition.Materials[0].Id
@@ -50,11 +52,20 @@ export function App() {
 		(color: Color) => color.Id === colorId
 	);
 
+	useEffect(() => {
+		saveState({ 
+			positionId: positionId.value,
+			materialId,
+			colorId
+		});
+	}, [positionId.value, materialId, colorId]);
+
 	const handlePositionChange = (newPosition: string) => {
 		// The selected position should be a valid position
 		const selectedPosition = data.Positions.find(position => {
 			return position.Position === newPosition
 		});
+
 		if (!selectedPosition) {
 			throw new Error("The api file is invalid");
 		}
@@ -63,7 +74,7 @@ export function App() {
 		 * - one material
 		 * - one color
 		 */
-		setPositionId(newPosition);
+		positionId.value = newPosition;
 		const newMaterial = selectedPosition.Materials[0];
 		setMaterialId(newMaterial.Id);
 		setColorId(newMaterial.Colors[0].Id);
@@ -94,7 +105,7 @@ export function App() {
 			<form class="product container-fluid" action="#">
 				<Positions
 					positions={data.Positions}
-					selectedPosition={positionId}
+					selectedPosition={positionId.value}
 					handlePositionChange={handlePositionChange}
 				/>
 				<div id="product-image" class="container product-image-container">
