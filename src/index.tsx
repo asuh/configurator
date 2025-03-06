@@ -1,6 +1,6 @@
 import { render } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
-import { signal } from '@preact/signals';
+import { computed, signal } from '@preact/signals';
 import config from './data/config.json';
 import Positions from './components/Positions';
 import Colors from './components/Colors';
@@ -32,18 +32,17 @@ const loadState = () => {
 }
 
 const savedState = loadState();
-
 const positionId = signal(savedState?.positionId || data.Positions[0].Position);
 
+const currentPosition = computed(() => {
+	return data.Positions.find((position) => position.Position === positionId.value);
+});
+
+const materialId = signal(savedState?.materialId || currentPosition.value.Materials[0].Id);
+
 export function App() {
-	const currentPosition = data.Positions.find(
-		(position) => position.Position === positionId.value
-	);
-	const [materialId, setMaterialId] = useState<string>(
-		currentPosition.Materials[0].Id
-	);
-	const currentMaterial = currentPosition.Materials.find(
-		(material: Material) => material.Id === materialId
+	const currentMaterial = currentPosition.value.Materials.find(
+		(material: Material) => material.Id === materialId.value
 	);
 	const [colorId, setColorId] = useState<string>(
 		currentMaterial.Colors[0].Id
@@ -55,10 +54,10 @@ export function App() {
 	useEffect(() => {
 		saveState({ 
 			positionId: positionId.value,
-			materialId,
+			materialId: materialId.value,
 			colorId
 		});
-	}, [positionId.value, materialId, colorId]);
+	}, [positionId.value, materialId.value, colorId]);
 
 	const handlePositionChange = (newPosition: string) => {
 		// The selected position should be a valid position
@@ -75,19 +74,18 @@ export function App() {
 		 * - one color
 		 */
 		positionId.value = newPosition;
-		const newMaterial = selectedPosition.Materials[0];
-		setMaterialId(newMaterial.Id);
-		setColorId(newMaterial.Colors[0].Id);
+		materialId.value = selectedPosition.Materials[0].Id;
+		setColorId(selectedPosition.Materials[0].Colors[0].Id);
 	}
 
 	const handleMaterialChange = (newMaterial: string) => {
-		const selectedMaterial = currentPosition.Materials.find(
+		const selectedMaterial = currentPosition.value.Materials.find(
 			(material: Material) => {
 				return material.Id === newMaterial
 			}
 		);
 		if (!selectedMaterial) return;
-		setMaterialId(newMaterial);
+		materialId.value = newMaterial;
 		// Reset the color to the first color available for the new material.
 		setColorId(selectedMaterial.Colors[0].Id);
 	}
@@ -127,8 +125,8 @@ export function App() {
 					}
 				</div>
 				<Materials
-					materials={currentPosition.Materials}
-					selectedMaterial={materialId}
+					materials={currentPosition.value.Materials}
+					selectedMaterial={materialId.value}
 					handleMaterialChange={handleMaterialChange}
 				/>
 				<Colors
