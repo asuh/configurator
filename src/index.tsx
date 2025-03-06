@@ -21,17 +21,30 @@ const saveState = (state) => {
 	}
 }
 
-const loadState = () => {
+const loadInitialState = () => {
 	try {
-		const savedState = localStorage.getItem(STORAGE_KEY);
-		return savedState ? JSON.parse(savedState) : null;
+		const saved = localStorage.getItem(STORAGE_KEY);
+		if (saved) {
+			const { positionId: savedPositionId, materialId: savedMaterialId, colorId: savedColorId } = JSON.parse(saved);
+
+			const position = data.Positions.find((position) => position.Position === savedPositionId);
+			if (!position) return null;
+
+			const material = position.Materials.find((material) => material.Id === savedMaterialId);
+			if (!material) return { positionId: savedPositionId };
+
+			const color = material.Colors.find((color) => color.Id === savedColorId);
+			if (!color) return { positionId: savedPositionId, materialId: savedMaterialId };
+
+			return { positionId: savedPositionId, materialId: savedMaterialId, colorId: savedColorId };
+		}
 	} catch (error) {
 		console.error('Failed to load state from local storage', error);
-		return null;
 	}
+	return null;
 }
 
-const savedState = loadState();
+const savedState = loadInitialState();
 const positionId = signal(savedState?.positionId || data.Positions[0].Position);
 
 const currentPosition = computed(() => {
