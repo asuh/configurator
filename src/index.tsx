@@ -54,6 +54,14 @@ const currentColor = computed(() => {
 	);
 });
 
+const modelImageSrc = computed(() => {
+	return `${data.BaseImageUrl}?pos=${currentPosition.value.Position}&mat=${currentMaterial.value.Id}&col=${currentColor.value.Id}`;
+});
+
+const modelImageAlt = computed(() => {
+	return `Model: Option ${currentPosition.value.Position}, Material ${currentMaterial.value.Name}, Color ${currentColor.value.Name}`;
+});
+
 export function App() {
 	useEffect(() => {
 		const cleanup = effect(() => {
@@ -99,9 +107,6 @@ export function App() {
 		colorId.value = newColor;
 	}
 
-	const modelImageSrc = `${data.BaseImageUrl}?pos=${currentPosition.value.Position}&mat=${currentMaterial.value.Id}&col=${currentColor.value.Id}`;
-	const modelImageAlt = `Model: Option ${currentPosition.value.Position}, Material ${currentMaterial.value.Name}, Color ${currentColor.value.Name}`;
-
 	return (
 		<>
 			<h1>Product Configurator</h1>
@@ -113,12 +118,16 @@ export function App() {
 				/>
 				<div id="product-image" class="container product-image-container">
 					<img
-						src={modelImageSrc}
-						alt={modelImageAlt}
+						src={modelImageSrc.value}
+						alt={modelImageAlt.value}
 					/>
 					{currentColor && currentPosition && currentMaterial &&
 						<div class="overlays-container">
-							<img src={currentPosition.value.ImageUrl} alt={`Position + ${currentPosition.value.Position}`} class="overlay-image" />
+							<img 
+								src={currentPosition.value.ImageUrl} 
+								alt={`Position + ${currentPosition.value.Position}`} 
+								class="overlay-image"
+							/>
 							<div
 								class="overlay-color"
 								style={`
