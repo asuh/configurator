@@ -4,6 +4,8 @@ A dynamic, interactive web application that allows users to customize a model's 
 
 ![Product Configurator Demo](http://localhost:5173/)
 
+![Screenshot of Configurator](/configurator.jpg)
+
 ## Features
 
 - **Interactive Product Configuration**: Change positions, materials, and colors with real-time visual updates
@@ -23,7 +25,7 @@ A dynamic, interactive web application that allows users to customize a model's 
 1. Clone the repository:
    ```bash
    git clone https://github.com/asuh/configurator.git
-   cd product-configurator
+   cd configurator
    ```
 
 2. Install dependencies:
@@ -78,9 +80,9 @@ effect(() => {
 ### Component Structure
 
 - **App**: Main container component
-- **Positions**: Position selection component
-- **Materials**: Material selection component 
-- **Colors**: Color selection component
+- **Positions**: Position component
+- **Materials**: Material component 
+- **Colors**: Color component
 
 ### Data Flow
 
@@ -117,3 +119,13 @@ Product data is loaded from a JSON configuration file with the following structu
   ]
 }
 ```
+
+## Future Updates
+
+1. Accessibility improvements - Ensure all interactive elements are accessible via keyboard navigation to enhance usability for users with disabilities
+2. Testing - Verify TypeScript covers all potential unit tests and type safety
+3. Performance improvements
+    1. Use better image formats
+    2. Remove swatches and use CSS
+    3. Refactor and break down components further
+4. Add loading indicators or spinners

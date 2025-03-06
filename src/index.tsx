@@ -123,7 +123,7 @@ export function App() {
 	return (
 		<>
 			<h1>Product Configurator</h1>
-			<form class="product container-fluid" action="#">
+			<form class="product" action="#">
 				<Positions
 					positions={data.Positions}
 					selectedPosition={positionId.value}
