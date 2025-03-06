@@ -1,15 +1,119 @@
-# `create-preact`
+# Product Configurator
 
-<h2 align="center">
-  <img height="256" width="256" src="./src/assets/preact.svg">
-</h2>
+A dynamic, interactive web application that allows users to customize a model's outfit by selecting different positions, materials, and colors. Built with Preact and leveraging Preact Signals for efficient state management and persistence.
 
-<h3 align="center">Get started using Preact and Vite!</h3>
+![Product Configurator Demo](http://localhost:5173/)
 
-## Getting Started
+## Features
 
--   `npm run dev` - Starts a dev server at http://localhost:5173/
+- **Interactive Product Configuration**: Change positions, materials, and colors with real-time visual updates
+- **Persistent Settings**: User selections are saved across page reloads
+- **Responsive Design**: Works seamlessly across desktop and mobile devices
+- **Optimized Performance**: Using Preact Signals for efficient state management and minimal re-renders
+- **Validation Logic**: Ensures compatible selections between positions, materials, and colors
 
--   `npm run build` - Builds for production, emitting to `dist/`
+## Technologies Used
 
--   `npm run preview` - Starts a server at http://localhost:4173/ to test production build locally
+- [Preact](https://preactjs.com/) - A fast 3kB alternative to React with the same API
+- [@preact/signals](https://github.com/preactjs/signals) - Fine-grained reactive state management
+- LocalStorage API - For persisting user preferences
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/asuh/configurator.git
+   cd product-configurator
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Usage
+
+1. **Position Selection**: Choose between different product positions/angles
+2. **Material Selection**: Select from available materials for the current position
+3. **Color Selection**: Pick a color from the available options for the selected material
+
+Your selections are automatically saved and will persist even after refreshing the page or returning later.
+
+## Architecture
+
+### State Management with Preact Signals
+
+This application uses Preact Signals for reactive state management:
+
+```javascript
+// Core state signals
+const positionId = signal(defaultPosition);
+const materialId = signal(defaultMaterial);
+const colorId = signal(defaultColor);
+
+// Computed values derived from state
+const currentPosition = computed(() => 
+  data.Positions.find(p => p.Position === positionId.value)
+);
+
+const currentMaterial = computed(() => 
+  currentPosition.value.Materials.find(m => m.Id === materialId.value)
+);
+
+// Automatic persistence
+effect(() => {
+  saveState({
+    positionId: positionId.value,
+    materialId: materialId.value,
+    colorId: colorId.value
+  });
+});
+```
+
+### Component Structure
+
+- **App**: Main container component
+- **Positions**: Position selection component
+- **Materials**: Material selection component 
+- **Colors**: Color selection component
+
+### Data Flow
+
+1. User interactions update signal values
+2. Computed signals automatically derive new values
+3. UI components react to signal changes
+4. State is automatically persisted to localStorage
+
+## Configuration
+
+Product data is loaded from a JSON configuration file with the following structure:
+
+```json
+{
+  "BaseImageUrl": "https://example.com/api/image",
+  "Positions": [
+    {
+      "Position": "position1",
+      "ImageUrl": "https://example.com/images/position1.png",
+      "Materials": [
+        {
+          "Id": "material1",
+          "Name": "Material 1",
+          "Colors": [
+            {
+              "Id": "color1",
+              "Name": "Color 1",
+              "SwatchUrl": "https://example.com/swatches/color1.png"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
