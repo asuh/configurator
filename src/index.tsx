@@ -1,6 +1,6 @@
 import { render } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
-import { computed, signal } from '@preact/signals';
+import { useEffect } from 'preact/hooks';
+import { computed, signal, effect } from '@preact/signals';
 import config from './data/config.json';
 import Positions from './components/Positions';
 import Colors from './components/Colors';
@@ -40,24 +40,32 @@ const currentPosition = computed(() => {
 
 const materialId = signal(savedState?.materialId || currentPosition.value.Materials[0].Id);
 
-export function App() {
-	const currentMaterial = currentPosition.value.Materials.find(
+const currentMaterial = computed(() => {
+	return currentPosition.value.Materials.find(
 		(material: Material) => material.Id === materialId.value
 	);
-	const [colorId, setColorId] = useState<string>(
-		currentMaterial.Colors[0].Id
-	);
-	const currentColor = currentMaterial.Colors.find(
-		(color: Color) => color.Id === colorId
-	);
+});
 
+const colorId = signal(savedState?.colorId || currentMaterial.value.Colors[0].Id);
+
+const currentColor = computed(() => {
+	return currentMaterial.value.Colors.find(
+		(color: Color) => color.Id === colorId.value
+	);
+});
+
+export function App() {
 	useEffect(() => {
-		saveState({ 
-			positionId: positionId.value,
-			materialId: materialId.value,
-			colorId
+		const cleanup = effect(() => {
+			saveState({ 
+				positionId: positionId.value,
+				materialId: materialId.value,
+				colorId: colorId.value
+			});
 		});
-	}, [positionId.value, materialId.value, colorId]);
+
+		return () => cleanup();
+	}, []);
 
 	const handlePositionChange = (newPosition: string) => {
 		// The selected position should be a valid position
@@ -68,14 +76,10 @@ export function App() {
 		if (!selectedPosition) {
 			throw new Error("The api file is invalid");
 		}
-		/*
-		 * The selected position should also have:
-		 * - one material
-		 * - one color
-		 */
+
 		positionId.value = newPosition;
 		materialId.value = selectedPosition.Materials[0].Id;
-		setColorId(selectedPosition.Materials[0].Colors[0].Id);
+		colorId.value = selectedPosition.Materials[0].Colors[0].Id;
 	}
 
 	const handleMaterialChange = (newMaterial: string) => {
@@ -84,18 +88,19 @@ export function App() {
 				return material.Id === newMaterial
 			}
 		);
+
 		if (!selectedMaterial) return;
+		
 		materialId.value = newMaterial;
-		// Reset the color to the first color available for the new material.
-		setColorId(selectedMaterial.Colors[0].Id);
+		colorId.value = selectedMaterial.Colors[0].Id;
 	}
 
 	const handleColorChange = (newColor: string) => {
-		setColorId(newColor);
+		colorId.value = newColor;
 	}
 
-	const modelImageSrc = `${data.BaseImageUrl}?pos=${currentPosition.Position}&mat=${currentMaterial.Id}&col=${currentColor.Id}`;
-	const modelImageAlt = `Model: Option ${currentPosition.Position}, Material ${currentMaterial.Name}, Color ${currentColor.Name}`;
+	const modelImageSrc = `${data.BaseImageUrl}?pos=${currentPosition.value.Position}&mat=${currentMaterial.value.Id}&col=${currentColor.value.Id}`;
+	const modelImageAlt = `Model: Option ${currentPosition.value.Position}, Material ${currentMaterial.value.Name}, Color ${currentColor.value.Name}`;
 
 	return (
 		<>
@@ -113,12 +118,12 @@ export function App() {
 					/>
 					{currentColor && currentPosition && currentMaterial &&
 						<div class="overlays-container">
-							<img src={currentPosition.ImageUrl} alt={`Position + ${currentPosition.Position}`} class="overlay-image" />
+							<img src={currentPosition.value.ImageUrl} alt={`Position + ${currentPosition.value.Position}`} class="overlay-image" />
 							<div
 								class="overlay-color"
 								style={`
-											--overlay-background: url(${currentColor.SwatchUrl});
-											--mask-image: url(${currentPosition.ImageUrl});
+											--overlay-background: url(${currentColor.value.SwatchUrl});
+											--mask-image: url(${currentPosition.value.ImageUrl});
 										`}
 							/>
 						</div>
@@ -130,8 +135,8 @@ export function App() {
 					handleMaterialChange={handleMaterialChange}
 				/>
 				<Colors
-					colors={currentMaterial.Colors}
-					selectedColor={colorId}
+					colors={currentMaterial.value.Colors}
+					selectedColor={colorId.value}
 					handleColorChange={handleColorChange}
 				/>
 				<button class="submit" type="submit">Submit</button>
